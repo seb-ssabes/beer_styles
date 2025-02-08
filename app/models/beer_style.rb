@@ -15,6 +15,10 @@ class BeerStyle < ApplicationRecord
         abv: row['ABV'],
         srm: row['SRM'],
         common_malts: row['Common Malts Used'],
+        origin: row['Country of Origin'],
+        notes: row['Aroma/Taste Notes'],
+        temperature: row['Drinking Temperature'],
+        glassware: row['Recommended Glassware']
       }
     end
 
