@@ -66,4 +66,8 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem 'csv'
+gem "csv"
+
+gem "tailwindcss-rails"
+
+gem "font-awesome-sass", '~> 6.5', '>= 6.5.2'
