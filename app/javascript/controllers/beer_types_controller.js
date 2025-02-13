@@ -5,22 +5,36 @@ export default class extends Controller {
 
   beerTypeHover(e) {
     const type = e.target.dataset.beerType;
+    const text = this.beerTextTarget.classList;
+    const icons = document.querySelectorAll(".beer-icon")
+    const hoveredIcon = e.currentTarget.querySelector(".beer-icon")
 
-    this.beerTextTarget.classList.remove("animate-slide-up");
+    text.remove("animate-slide-up");
     void this.beerTextTarget.offsetWidth;
 
     this.beerTextTarget.innerText = type;
 
-    this.beerTextTarget.classList.add("animate-slide-up");
+    text.add("animate-slide-up");
+
+    icons.forEach(icon => {
+      if (icon !== hoveredIcon) {
+        icon.classList.add("opacity-40");
+      }
+    })
   }
 
   beerHoverLeave() {
-    console.log("leaving")
+    const text = this.beerTextTarget.classList;
+    const icons = document.querySelectorAll(".beer-icon");
+
+
     this.beerTextTarget.innerText = "any Beer Type";
 
-    this.beerTextTarget.classList.remove("animate-slide-up");
+    text.remove("animate-slide-up");
     void this.beerTextTarget.offsetWidth;
 
-    this.beerTextTarget.classList.add("animate-slide-up");
+    text.add("animate-slide-up");
+
+    icons.forEach(icon => icon.classList.remove("opacity-40"));
   }
 }
