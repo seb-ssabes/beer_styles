@@ -1,6 +1,7 @@
 <div class="mx-auto px-16 py-6">
   <div class="flex flex-row w-full mx-auto h-full gap-4 items-center justify-between"
        data-controller="beer-types beer-styles">
+
     <div class="text-2xl">
       <h1 class="text-2xl w-60">Learn about</h1>
       <div class="relative overflow-hidden h-8">
@@ -10,22 +11,16 @@
         </span>
       </div>
     </div>
+
     <div class="p-10 grid grid-cols-7">
 
-      <div data-action="mouseenter->beer-types#beerTypeHover mouseleave->beer-types#beerHoverLeave click->beer-styles#showList" data-beer-type="Pale Lager"><%= inline_svg_tag 'icons/pint1', class: "beer-icon", data:{beer_type: "Pale Lager" } %></div>
-      <div data-action="mouseenter->beer-types#beerTypeHover mouseleave->beer-types#beerHoverLeave click->beer-styles#showList" data-beer-type="Wheat Beer"><%= inline_svg_tag 'icons/barley', class: "beer-icon" %></div>
-      <div data-action="mouseenter->beer-types#beerTypeHover mouseleave->beer-types#beerHoverLeave click->beer-styles#showList" data-beer-type="Pale Ale"><%= inline_svg_tag 'icons/hops', class: "beer-icon" %></div>
-      <div data-action="mouseenter->beer-types#beerTypeHover mouseleave->beer-types#beerHoverLeave click->beer-styles#showList" data-beer-type="Amber Lager"><%= inline_svg_tag 'icons/pint2', class: "beer-icon" %></div>
-      <div data-action="mouseenter->beer-types#beerTypeHover mouseleave->beer-types#beerHoverLeave click->beer-styles#showList" data-beer-type="Dark Lager"><%= inline_svg_tag 'icons/pint3', class: "beer-icon" %></div>
-      <div data-action="mouseenter->beer-types#beerTypeHover mouseleave->beer-types#beerHoverLeave click->beer-styles#showList" data-beer-type="Pilsner"><%= inline_svg_tag 'icons/schop', class: "beer-icon" %></div>
-      <div data-action="mouseenter->beer-types#beerTypeHover mouseleave->beer-types#beerHoverLeave click->beer-styles#showList" data-beer-type="Bock"><%= inline_svg_tag 'icons/pint2', class: "beer-icon" %></div>
-      <div data-action="mouseenter->beer-types#beerTypeHover mouseleave->beer-types#beerHoverLeave click->beer-styles#showList" data-beer-type="Amber Ale"><%= inline_svg_tag 'icons/pint3', class: "beer-icon" %></div>
-      <div data-action="mouseenter->beer-types#beerTypeHover mouseleave->beer-types#beerHoverLeave click->beer-styles#showList" data-beer-type="Porter"><%= inline_svg_tag 'icons/sniffer', class: "beer-icon" %></div>
-      <div data-action="mouseenter->beer-types#beerTypeHover mouseleave->beer-types#beerHoverLeave click->beer-styles#showList" data-beer-type="IPA"><%= inline_svg_tag 'icons/pint4', class: "beer-icon" %></div>
-      <div data-action="mouseenter->beer-types#beerTypeHover mouseleave->beer-types#beerHoverLeave click->beer-styles#showList" data-beer-type="Brown Ale"><%= inline_svg_tag 'icons/pint1', class: "beer-icon" %></div>
-      <div data-action="mouseenter->beer-types#beerTypeHover mouseleave->beer-types#beerHoverLeave click->beer-styles#showList" data-beer-type="Stout"><%= inline_svg_tag 'icons/sniffer', class: "beer-icon" %></div>
-      <div data-action="mouseenter->beer-types#beerTypeHover mouseleave->beer-types#beerHoverLeave click->beer-styles#showList" data-beer-type="Strong Ale"><%= inline_svg_tag 'icons/pint3', class: "beer-icon" %></div>
-      <div data-action="mouseenter->beer-types#beerTypeHover mouseleave->beer-types#beerHoverLeave click->beer-styles#showList" data-beer-type="Sour Ale"><%= inline_svg_tag 'icons/sour', class: "beer-icon" %></div>
+      <% @beer_types.each do |beer_type| %>
+        <div data-action="mouseenter->beer-types#beerTypeHover mouseleave->beer-types#beerHoverLeave click->beer-styles#showList"
+             data-beer-type="<%= beer_type.id %>"
+             data-beer-type-name="<%= beer_type.name %>">
+          <%= inline_svg_tag 'icons/pint1', class: "beer-icon" %>
+        </div>
+      <% end %>
 
     </div>
 

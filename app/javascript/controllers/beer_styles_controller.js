@@ -7,10 +7,9 @@ export default class extends Controller {
     console.log("Hola from Styles")
   }
 
-  showList(event) {
-    const beerTypeId = event.target.getAttribute('data-beer-type')
+  showList(e) {
+    const beerTypeId = e.currentTarget.dataset.beerType;
     console.log("Selected Beer Type:", beerTypeId);
-
 
     fetch(`/beer_styles/beer_type_styles?beer_type_id=${beerTypeId}`)
       .then (response => response.json())
