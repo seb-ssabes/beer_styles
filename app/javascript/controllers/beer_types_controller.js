@@ -3,8 +3,12 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["beerText"]
 
+  connect() {
+    console.log("Hola from Types")
+  }
+
   beerTypeHover(e) {
-    const type = e.target.dataset.beerType;
+    const type = e.target.dataset.beerTypeName;
     const text = this.beerTextTarget.classList;
     const icons = document.querySelectorAll(".beer-icon")
     const hoveredIcon = e.currentTarget.querySelector(".beer-icon")
