@@ -15,8 +15,11 @@ export default class extends Controller {
       .then (response => response.json())
       .then (data => {
         this.beerStylesListTarget.innerHTML = '';
+
         data.forEach(style => {
           const styleElement = document.createElement('div')
+          styleElement.className = "p-4 bg-gray-100 rounded shadow"
+
           styleElement.innerText = style.name
           this.beerStylesListTarget.appendChild(styleElement)
         });
