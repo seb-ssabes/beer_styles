@@ -8,7 +8,7 @@ export default class extends Controller {
   }
 
   beerTypeHover(e) {
-    const type = e.target.dataset.beerTypeName;
+    const type = e.currentTarget.dataset.beerTypeName;
     const text = this.beerTextTarget.classList;
     const icons = document.querySelectorAll(".beer-icon")
     const hoveredIcon = e.currentTarget.querySelector(".beer-icon")

@@ -26,4 +26,9 @@ export default class extends Controller {
       })
       .catch(error => console.error('Error fetching beer styles:', error));
   }
+
+  closeModal(e) {
+    e.preventDefault();
+    document.getElementById("beer-style-modal").innerHTML = "";
+  }
 }
