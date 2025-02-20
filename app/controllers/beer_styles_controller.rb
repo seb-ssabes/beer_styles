@@ -6,13 +6,22 @@ class BeerStylesController < ApplicationController
   end
 
   def beer_type_styles
-    beer_type = BeerType.find_by(id: params[:beer_type_id])
+    @beer_type = BeerType.find_by(id: params[:beer_type_id])
+    @beer_styles = @beer_type.beer_styles
 
-    if beer_type
-      beer_styles = beer_type.beer_styles
-      render json: beer_styles
-    else
-      render json: [], status: 404
+    respond_to do |format|
+      format.html { render partial: "beer_styles/list", locals: { beer_styles: @beer_styles } }
+      format.turbo_stream { render partial: "beer_styles/list" , locals: { beer_styles: @beer_styles } }
+    end
+
+  end
+
+  def show
+    @beer_style = BeerStyle.find(params[:id])
+
+    respond_to do |format|
+      format.html { render partial: "beer_styles/card_modal", locals: { beer_style: @beer_style } }
+      format.turbo_stream { render partial: "beer_styles/card_modal", locals: { beer_style: @beer_style }}
     end
   end
 

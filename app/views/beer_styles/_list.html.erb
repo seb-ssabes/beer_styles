@@ -1,0 +1,7 @@
+<turbo-frame id="beer-styles-list">
+  <div class="mt-8 grid grid-cols-4 gap-4 w-full p-4 bg-gray-50 rounded-lg shadow-md">
+    <% beer_styles.each do |style| %>
+      <%= link_to style.name, beer_style_path(style), data: {turbo_frame: "beer-style-modal" }, class: "p-4 bg-gray-100 rounded shadow block text-center hover:bg-gray-200 transition" %>
+    <% end %>
+  </div>
+</turbo-frame>
