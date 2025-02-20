@@ -1,11 +1,10 @@
-<turbo-frame id="beer-style-modal" class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50">
+<div id="beer-style-modal" class="flex items-center justify-center bg-gray-900 bg-opacity-50">
   <div class="bg-white rounded-lg shadow-lg w-96 p-6 relative">
     <h2 class="text-2xl font-bold"><%= beer_style.name %></h2>
     <p class="text-gray-700 mt-2"><%= beer_style.style_description %></p>
-    <p class="mt-2"><strong>ABV:</strong><%= beer_style.abv %></p>
-    <p class="mt-2"><strong>IBU:</strong><%= beer_style.ibu %></p>
-    <p class="mt-2"><strong>Origin:</strong><%= beer_style.origin %></p>
-
-    <button class="absolute top-2 right-2 text-red-500 font-bold text-xl" data-action="click->beer-styles#closeModal"></button>
+    <p class="mt-2"><strong>ABV:</strong> <%= beer_style.abv %></p>
+    <p class="mt-2"><strong>IBU:</strong> <%= beer_style.ibu %></p>
+    <p class="mt-2"><strong>Origin:</strong> <%= beer_style.origin %></p>
+    <button class="text-red-500 font-bold text-xl mt-4" data-action="click->beer-styles#closeModal">X</button>
   </div>
-</turbo-frame>
+</div>

@@ -9,20 +9,12 @@ class BeerStylesController < ApplicationController
     @beer_type = BeerType.find_by(id: params[:beer_type_id])
     @beer_styles = @beer_type.beer_styles
 
-    respond_to do |format|
-      format.html { render partial: "beer_styles/list", locals: { beer_styles: @beer_styles } }
-      format.turbo_stream { render partial: "beer_styles/list" , locals: { beer_styles: @beer_styles } }
-    end
-
+    render partial: "beer_styles/list", locals: { beer_styles: @beer_styles }
   end
 
   def show
     @beer_style = BeerStyle.find(params[:id])
 
-    respond_to do |format|
-      format.html { render partial: "beer_styles/card_modal", locals: { beer_style: @beer_style } }
-      format.turbo_stream { render partial: "beer_styles/card_modal", locals: { beer_style: @beer_style }}
-    end
+    render partial: "beer_styles/card_modal", locals: { beer_style: @beer_style }
   end
-
 end
