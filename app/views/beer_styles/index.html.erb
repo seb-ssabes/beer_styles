@@ -1,5 +1,5 @@
 <div class="mx-auto px-16 py-6 mb-10" data-controller="beer-types beer-styles">
-  <div class="flex flex-row w-full mx-auto h-full gap-4 items-center justify-between">
+  <div class="flex flex-row mx-auto gap-4 items-center justify-between">
 
     <div class="text-2xl">
       <h1 class="text-2xl w-60">Learn about</h1>
@@ -16,17 +16,23 @@
       <% @beer_types.each do |beer_type| %>
         <div
           data-action="click->beer-styles#showList mouseenter->beer-types#beerTypeHover mouseleave->beer-types#beerHoverLeave"
-          data-beer-type="<%= beer_type.id %>"
-          data-beer-type-name="<%= beer_type.name  %>"
+          data-beer-type-id="<%= beer_type.id %>"
+          data-beer-type-name="<%= beer_type.name %>"
+          data-beer-type-description="<%= beer_type.description %>"
           class="p-4 rounded-lg shadow-lg flex items-center justify-center transition hover:bg-gray-200 cursor-pointer">
-          <%= inline_svg_tag 'icons/pint1', class: "beer-icon" %>
+          <%= inline_svg_tag beer_type_icon(beer_type.name), class: "beer-icon" %>
         </div>
       <% end %>
 
     </div>
   </div>
 
-  <div data-beer-styles-target="beerStylesList" class="mt-8 grid grid-cols-4 gap-4 w-full p-4 bg-gray-50 rounded-lg shadow-md"></div>
+
+  <div data-beer-styles-target="beerTypeData" class="">
+
+  </div>
+
+  <div data-beer-styles-target="beerStylesList" class="mt-8 grid grid-cols-4 gap-4 p-4 bg-gray-50 rounded-lg shadow-md items-center "></div>
   <div data-beer-styles-target="infoCard"></div>
 
 

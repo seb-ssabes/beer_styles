@@ -1,15 +1,21 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["beerStylesList", "infoCard"]
+  static targets = ["beerStylesList", "infoCard", "beerTypeData"]
 
   connect() {
     console.log("Hola from Styles")
   }
 
   showList(e) {
-    const beerTypeId = e.currentTarget.dataset.beerType;
-    console.log("Selected Beer Type:", beerTypeId);
+    const beerTypeId = e.currentTarget.dataset.beerTypeId;
+    const beerTypeName = e.currentTarget.dataset.beerTypeName;
+    const beerTypeDescription = e.currentTarget.dataset.beerTypeDescription;
+
+    this.beerTypeDataTarget.innerHTML = `
+      <h2>${beerTypeName}</h2>
+      <p>${beerTypeDescription}</p>
+    `
 
     this.removeModalIfNeeded();
 
