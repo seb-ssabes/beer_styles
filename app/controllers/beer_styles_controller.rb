@@ -15,6 +15,6 @@ class BeerStylesController < ApplicationController
   def show
     @beer_style = BeerStyle.find(params[:id])
 
-    render partial: "beer_styles/card_modal", locals: { beer_style: @beer_style }
+    render partial: "beer_styles/card", locals: { beer_style: @beer_style }
   end
 end
