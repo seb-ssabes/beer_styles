@@ -14,13 +14,17 @@
     <div class="p-10 grid grid-cols-7">
 
       <% @beer_types.each do |beer_type| %>
-        <div
-          data-action="click->beer-styles#showList mouseenter->beer-types#beerTypeHover mouseleave->beer-types#beerHoverLeave"
-          data-beer-type-id="<%= beer_type.id %>"
-          data-beer-type-name="<%= beer_type.name %>"
-          data-beer-type-description="<%= beer_type.description %>"
-          class="p-4 rounded-lg shadow-lg flex items-center justify-center transition hover:bg-gray-200 cursor-pointer">
-          <%= inline_svg_tag beer_type_icon(beer_type.name), class: "beer-icon" %>
+        <div class="p-1">
+
+          <div
+            data-action="click->beer-styles#showList mouseenter->beer-types#beerTypeHover mouseleave->beer-types#beerHoverLeave"
+            data-beer-type-id="<%= beer_type.id %>"
+            data-beer-type-name="<%= beer_type.name %>"
+            data-beer-type-description="<%= beer_type.description %>"
+            class="beer-type">
+            <%= inline_svg_tag beer_type_icon(beer_type.name), class: "beer-icon" %>
+          </div>
+
         </div>
       <% end %>
 
