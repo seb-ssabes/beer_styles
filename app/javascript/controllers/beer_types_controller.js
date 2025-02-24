@@ -49,7 +49,7 @@ export default class extends Controller {
       text.add("animate-slide-up");
 
       e.currentTarget.classList.remove("hovered-border");
-    }, 2000);
+    }, 500);
     icons.forEach(icon => icon.classList.remove("opacity-40", "dark-gray"));
   }
 }
