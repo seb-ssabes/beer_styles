@@ -1,12 +1,13 @@
 <div class="mx-auto px-16 py-6 mb-10" data-controller="beer-types beer-styles">
-  <div class="flex flex-row mx-auto gap-4 items-center justify-between">
+  <h1 class="text-4xl font-bold text-center mt-6 mb-8">Welcome to the Beer Style Catalog</h1>
+  <div class="flex flex-col mx-auto gap-4 items-center justify-between">
 
-    <div class="text-2xl">
-      <h1 class="text-2xl w-60">Learn about</h1>
-      <div class="relative overflow-hidden h-8">
+    <div class="text-2xl flex justify-center items-center gap-1 pl-8">
+      <h1 class="w-auto whitespace-nowrap">Familiarize yourself with</h1>
+      <div class="relative h-8 w-40 text-center overflow-hidden">
         <span data-beer-types-target="beerText"
-              class="transition-all opacity-100 duration-500 ease-out block">
-          any Beer Type
+              class="transition-all opacity-100 duration-500 ease-out block text-left">
+          any Style
         </span>
       </div>
     </div>
@@ -31,13 +32,7 @@
     </div>
   </div>
 
-
-  <div data-beer-styles-target="beerTypeData" class="">
-
-  </div>
-
+  <div data-beer-styles-target="beerTypeData" class=""></div>
   <div data-beer-styles-target="beerStylesList" class=""></div>
   <div data-beer-styles-target="infoCard"></div>
-
-
 </div>

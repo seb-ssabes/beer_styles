@@ -40,12 +40,14 @@
 @keyframes slideUp {
   from {
     opacity: 0;
-    transform: translateY(10px)
+    transform: translateY(10px);
+    margin-left: 1;
   }
 
   to {
     opacity: 1;
-    transform: translateY(0px)
+    transform: translateY(0px);
+    margin-left: 1;
   }
 }
 
@@ -115,7 +117,7 @@ button {
 
  button.learn-more:active::before {
   -webkit-box-shadow: 0 0 0 2px #bdbdbd, 0 0 #dddddd;
-  box-shadow: 0 0 0 2px #bdbdbd, 0 0 #dddddd; 
+  box-shadow: 0 0 0 2px #bdbdbd, 0 0 #dddddd;
   -webkit-transform: translate3d(0, 0, -1em);
   transform: translate3d(0, 0, -1em);
  }
