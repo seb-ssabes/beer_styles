@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["beerText"]
+  static targets = ["beerText", "beersWord"]
 
   connect() {
     console.log("Hola from Types");
@@ -40,7 +40,7 @@ export default class extends Controller {
     const icons = document.querySelectorAll(".beer-icon");
 
     this.hoverTimeout = setTimeout(() => {
-      this.beerTextTarget.innerText = "any Beer Type";
+      this.beerTextTarget.innerText = "any Style";
 
 
       text.remove("animate-slide-up");
