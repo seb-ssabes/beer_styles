@@ -13,8 +13,10 @@ export default class extends Controller {
     const beerTypeDescription = e.currentTarget.dataset.beerTypeDescription;
 
     this.beerTypeDataTarget.innerHTML = `
-      <h2>${beerTypeName}</h2>
-      <p>${beerTypeDescription}</p>
+      <div class="flex flex-col items-center text-center">
+        <h2 class="text-2xl font-bold">${beerTypeName}</h2>
+        <p class="italic text-lg">${beerTypeDescription}</p>
+      </div>
     `
 
     this.removeModalIfNeeded();
