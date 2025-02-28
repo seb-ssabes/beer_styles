@@ -41,6 +41,8 @@ export default class extends Controller {
 
       })
       .catch(error => console.error('Error fetching beer style details:', error));
+
+    this.infoCardTarget.classList.remove("hidden");
   }
 
   removeModalIfNeeded() {
