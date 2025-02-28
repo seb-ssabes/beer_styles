@@ -1,10 +1,61 @@
-<div id="beer-style-modal" class="flex items-center justify-center bg-gray-900 bg-opacity-50">
-  <div class="bg-white rounded-lg shadow-lg w-96 p-6 relative">
-    <h2 class="text-2xl font-bold"><%= beer_style.name %></h2>
-    <p class="text-gray-700 mt-2"><%= beer_style.style_description %></p>
-    <p class="mt-2"><strong>ABV:</strong> <%= beer_style.abv %></p>
-    <p class="mt-2"><strong>IBU:</strong> <%= beer_style.ibu %></p>
-    <p class="mt-2"><strong>Origin:</strong> <%= beer_style.origin %></p>
-    <button class="text-red-500 font-bold text-xl mt-4" data-action="click->beer-styles#closeModal">X</button>
+<div id="beer-style-modal" class="flex items-center justify-center bg-opacity-50">
+  <div class="card w-96 p-6 relative bg-white shadow-lg rounded-lg">
+
+    <!-- Title & Close Button -->
+    <div class="flex justify-between items-center -mt-3">
+      <h2 class="text-2xl font-bold text-start flex-1"><%= beer_style.name %></h2>
+      <button class="text-gray-500 font-bold text-xl" data-action="click->beer-styles#closeModal">X</button>
+    </div>
+
+    <!-- Description -->
+    <div class="flex flex-row items-center">
+      <p class="text-gray-700 mt-3 text-justify w-3/5 m"><%= beer_style.style_description %></p>
+      <%= inline_svg_tag "icons/pint2", class: "w-2/5 h-auto max-h-32 scale-110 object-cover max-w-none" %>
+    </div>
+
+    <!-- ABV, IBU, SRM - Horizontally Aligned -->
+    <div class="grid grid-cols-3 gap-4 mt-5 text-center">
+      <div class="items-start">
+        <p class="font-bold">ABV</p>
+        <p><%= beer_style.abv %></p>
+      </div>
+      <div class="items-center">
+        <p class="font-bold">IBU</p>
+        <p><%= beer_style.ibu %></p>
+      </div>
+      <div class="items-end">
+        <p class="font-bold">SRM</p>
+        <p><%= beer_style.srm %></p>
+      </div>
+    </div>
+
+    <!-- Origin, Glassware, Temperature - Horizontally Aligned -->
+    <div class="grid grid-cols-3 gap-4 text-center mt-5">
+      <div>
+        <p class="font-bold">Origin</p>
+        <p><%= beer_style.origin %></p>
+      </div>
+      <div>
+        <p class="font-bold">Glassware</p>
+        <p><%= beer_style.glassware %></p>
+      </div>
+      <div>
+        <p class="font-bold">Temp</p>
+        <p><%= beer_style.temperature %></p>
+      </div>
+    </div>
+
+    <!-- Common Malts -->
+    <div class="mt-4 text-center">
+      <p class="font-bold">Common Malts Used</p>
+      <p><%= beer_style.common_malts %></p>
+    </div>
+
+    <!-- Notes -->
+    <div class="mt-5 text-center">
+      <p class="font-bold">Notes</p>
+      <p><%= beer_style.notes %></p>
+    </div>
+
   </div>
 </div>
