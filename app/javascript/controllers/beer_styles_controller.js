@@ -11,26 +11,37 @@ export default class extends Controller {
     const beerTypeId = e.currentTarget.dataset.beerTypeId;
     const beerTypeName = e.currentTarget.dataset.beerTypeName;
     const beerTypeDescription = e.currentTarget.dataset.beerTypeDescription;
+    const isFirstClick = !this.beerTypeDataTarget.innerHTML.trim();
 
-    this.beerTypeDataTarget.innerHTML = `
-      <div class="flex flex-col items-center text-center">
+
+    if (!isFirstClick) {
+      this.beerTypeDataTarget.classList.add("opacity-0", "scale-95");
+      this.beerStylesListTarget.classList.add("opacity-0", "scale-95");
+    }
+
+    const delay = isFirstClick ? 0 : 1600;
+
+    setTimeout(() => {
+      this.beerTypeDataTarget.innerHTML = `
+        <div class="flex flex-col items-center text-center">
         <h2 class="text-2xl font-bold">${beerTypeName}</h2>
-        <p class="italic text-lg">${beerTypeDescription}</p>
-      </div>
-    `;
-    this.beerTypeDataTarget.classList.remove("opacity-0");
+          <p class="italic text-lg">${beerTypeDescription}</p>
+          </div>
+      `;
 
+      this.removeModalIfNeeded();
 
-    this.removeModalIfNeeded();
+      fetch(`/beer_styles/beer_type_styles?beer_type_id=${beerTypeId}`)
+      .then(response => response.text())
+      .then(html => {
+        this.beerStylesListTarget.innerHTML = html;
 
-    fetch(`/beer_styles/beer_type_styles?beer_type_id=${beerTypeId}`)
-    .then(response => response.text())
-    .then(html => {
-      this.beerStylesListTarget.innerHTML = html;
-      this.beerStylesListTarget.classList.remove("opacity-0")
+        this.beerTypeDataTarget.classList.remove("opacity-0", "scale-95");
+        this.beerStylesListTarget.classList.remove("opacity-0", "scale-95");
 
-    })
-    .catch(error => console.error('Error fetching beer styles:', error));
+      })
+      .catch(error => console.error('Error fetching beer styles:', error));
+    }, delay);
   }
 
   showBeerStyle(e) {
@@ -46,7 +57,7 @@ export default class extends Controller {
       })
       .catch(error => console.error('Error fetching beer style details:', error));
 
-    this.infoCardTarget.classList.remove("hidden");
+    this.infoCardTarget.classList.remove("hidden", "opacity-0");
   }
 
   removeModalIfNeeded() {
