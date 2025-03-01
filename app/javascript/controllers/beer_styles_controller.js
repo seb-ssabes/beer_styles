@@ -17,16 +17,20 @@ export default class extends Controller {
         <h2 class="text-2xl font-bold">${beerTypeName}</h2>
         <p class="italic text-lg">${beerTypeDescription}</p>
       </div>
-    `
+    `;
+    this.beerTypeDataTarget.classList.remove("opacity-0");
+
 
     this.removeModalIfNeeded();
 
     fetch(`/beer_styles/beer_type_styles?beer_type_id=${beerTypeId}`)
-      .then(response => response.text())
-      .then(html => {
-        this.beerStylesListTarget.innerHTML = html;
-      })
-      .catch(error => console.error('Error fetching beer styles:', error));
+    .then(response => response.text())
+    .then(html => {
+      this.beerStylesListTarget.innerHTML = html;
+      this.beerStylesListTarget.classList.remove("opacity-0")
+
+    })
+    .catch(error => console.error('Error fetching beer styles:', error));
   }
 
   showBeerStyle(e) {
