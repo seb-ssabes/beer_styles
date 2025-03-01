@@ -58,7 +58,34 @@
   box-shadow: 8px 8px 2px 1px #dddddd;
 }
 
+.content-container {
+  width: 100%;
+  position: relative; /* Position relative for absolute child positioning */
+  transition: transform 1s ease-in-out; /* Animate translateX */
+}
 
+/* Shrink content when the beer style is clicked */
+.content-container.shrink {
+  transform: translateX(-20%); /* Move content left (adjust % as necessary) */
+}
+
+/* Position the card over the content when it's hidden */
+.info-card {
+  position: absolute;
+  right: 0; /* Make it appear on the right */
+  top: 15%;
+  left: 53%; /* Center the card horizontally */
+  /* transform: translateX(-5%); Align with top of container */
+  width: 40%; /* Card size */
+  opacity: 0;
+  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+}
+
+/* Show the card */
+.info-card.show {
+  opacity: 1;
+  transform: translateY(0); /* Slide it into view */
+}
 
 /* From Uiverse.io by Madflows */
 button {

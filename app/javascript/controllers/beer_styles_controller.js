@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["beerStylesList", "infoCard", "beerTypeData"]
+  static targets = ["beerStylesList", "infoCard", "beerTypeData", "contentContainer"]
 
   connect() {
     console.log("Hola from Styles")
@@ -36,9 +36,12 @@ export default class extends Controller {
       .then(html => {
         this.beerStylesListTarget.innerHTML = html;
 
+        this.contentContainerTarget.classList.remove("shrink");
+
+        this.infoCardTarget.classList.remove("show");
+
         this.beerTypeDataTarget.classList.remove("opacity-0", "scale-95");
         this.beerStylesListTarget.classList.remove("opacity-0", "scale-95");
-
       })
       .catch(error => console.error('Error fetching beer styles:', error));
     }, delay);
@@ -46,14 +49,17 @@ export default class extends Controller {
 
   showBeerStyle(e) {
     const beerStyleId = e.currentTarget.dataset.styleId;
-    console.log("Fetching details for beer style:", beerStyleId);
+
+    this.contentContainerTarget.classList.add("shrink");
 
     fetch(`/beer_styles/${beerStyleId}`)
       .then(response => response.text())
       .then(html => {
         this.removeModalIfNeeded();
         this.infoCardTarget.innerHTML = html;
-
+        setTimeout(() => {
+          this.infoCardTarget.classList.add("show");
+        }, 1000);
       })
       .catch(error => console.error('Error fetching beer style details:', error));
 
