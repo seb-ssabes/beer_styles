@@ -1,10 +1,12 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["beerStylesList", "infoCard", "beerTypeData", "contentContainer"]
+  static targets = ["beerStylesList", "infoCard", "beerTypeData", "contentContainer",
+                    "inner", "front", "back"]
 
   connect() {
     console.log("Hola from Styles")
+    this.isCardVisible = false;
   }
 
   showList(e) {
@@ -49,17 +51,39 @@ export default class extends Controller {
 
   showBeerStyle(e) {
     const beerStyleId = e.currentTarget.dataset.styleId;
+    console.log("Front HTML before:", this.frontTarget.innerHTML);
+
 
     this.contentContainerTarget.classList.add("shrink");
 
-    fetch(`/beer_styles/${beerStyleId}`)
+    fetch(`/beer_styles/${beerStyleId}?partial=content`)
       .then(response => response.text())
       .then(html => {
         this.removeModalIfNeeded();
-        this.infoCardTarget.innerHTML = html;
-        setTimeout(() => {
-          this.infoCardTarget.classList.add("show");
-        }, 1000);
+
+        if (!this.isCardVisible) {
+          console.log("HOLA: reacting to invisible div");
+
+          this.frontTarget.innerHTML = html;
+
+          setTimeout(() => {
+            this.infoCardTarget.classList.add("show");
+            this.isCardVisible = true;
+          }, 1000);
+        } else {
+          console.log("HOLA: reacting to VISIBLE div");
+
+          this.backTarget.innerHTML = html;
+          this.innerTarget.classList.add("flip");
+
+          setTimeout(() => {
+            this.frontTarget.innerHTML = html;
+
+            setTimeout(() => {
+              this.innerTarget.classList.remove("flip");
+            }, 600);
+          }, 600);
+        }
       })
       .catch(error => console.error('Error fetching beer style details:', error));
 
