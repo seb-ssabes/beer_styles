@@ -1,8 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["beerStylesList", "infoCard", "beerTypeData", "contentContainer",
-                    "inner", "front", "back"]
+  static targets = ["beerStylesList", "infoCard", "beerTypeData", "contentContainer", "cardContent"]
 
   connect() {
     console.log("Hola from Styles")
@@ -15,6 +14,8 @@ export default class extends Controller {
     const beerTypeDescription = e.currentTarget.dataset.beerTypeDescription;
     const isFirstClick = !this.beerTypeDataTarget.innerHTML.trim();
 
+    this.isCardVisible = false;
+    this.infoCardTarget.classList.remove("show");
 
     if (!isFirstClick) {
       this.beerTypeDataTarget.classList.add("opacity-0", "scale-95");
@@ -51,8 +52,6 @@ export default class extends Controller {
 
   showBeerStyle(e) {
     const beerStyleId = e.currentTarget.dataset.styleId;
-    console.log("Front HTML before:", this.frontTarget.innerHTML);
-
 
     this.contentContainerTarget.classList.add("shrink");
 
@@ -62,26 +61,33 @@ export default class extends Controller {
         this.removeModalIfNeeded();
 
         if (!this.isCardVisible) {
-          console.log("HOLA: reacting to invisible div");
-
-          this.frontTarget.innerHTML = html;
+          console.log("Card is not visible, updating front content");
+          this.cardContentTarget.innerHTML = html;
 
           setTimeout(() => {
+            console.log("Making card visible");
             this.infoCardTarget.classList.add("show");
+            this.infoCardTarget.classList.remove("opacity-0", "scale-95");
+            this.cardContentTarget.classList.remove("opacity-0", "scale-95");
             this.isCardVisible = true;
-          }, 1000);
+          }, 500);
         } else {
-          console.log("HOLA: reacting to VISIBLE div");
-
-          this.backTarget.innerHTML = html;
-          this.innerTarget.classList.add("flip");
+          this.infoCardTarget.classList.add("opacity-0");
+          this.cardContentTarget.classList.add("opacity-0");
 
           setTimeout(() => {
-            this.frontTarget.innerHTML = html;
+            this.cardContentTarget.innerHTML = html;
+
+            this.infoCardTarget.classList.remove("opacity-0");
+            this.cardContentTarget.classList.remove("opacity-0");
+
+            this.infoCardTarget.classList.add("opacity-1");
+            this.cardContentTarget.classList.add("opacity-1");
 
             setTimeout(() => {
-              this.innerTarget.classList.remove("flip");
-            }, 600);
+              this.infoCardTarget.classList.remove("opacity-1");
+              this.cardContentTarget.classList.remove("opacity-1")
+            }, 500);
           }, 600);
         }
       })

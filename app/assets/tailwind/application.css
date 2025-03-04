@@ -78,11 +78,6 @@
   transition: opacity 1s ease-in-out, transform 1s ease-in-out;
 }
 
-.info-card.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 /* From Uiverse.io by Madflows */
 button {
   position: relative;
@@ -154,37 +149,30 @@ button.learn-more:active::before {
   transform: translate3d(0, 0, -1em);
 }
 
-.info-card {
-  perspective: 1000px;
+/* Base style for .info-card and .card-content */
+.info-card,
+.card-content {
+  position: absolute;
   width: 40%;
   height: auto;
+  opacity: 0; /* Start invisible */
+  transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth opacity and transform transition */
+}
+
+.info-card.show {
+  opacity: 1; /* Make the card visible when "show" class is added */
+}
+
+.card-content.show {
+  opacity: 1; /* Make the content visible when "show" class is added */
+}
+
+/* Optional: Fade-in/fade-out classes */
+.opacity-0 {
   opacity: 0;
-  transition: opacity 0.5s ease-in-out;
 }
 
-.flip-card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transform-style: preserve-3d;
-  transition: transform 0.6s;
-}
-
-.flip-card-front, .flip-card-back {
-  position: absolute;
-  width: 100%;
-  backface-visibility: hidden;
-}
-
-.flip-card-front {
-  z-index: 2;
-}
-
-.flip-card-back {
-  transform: rotateY(180deg);
-}
-
-.flip {
-  transform: rotateY(180deg);
+.opacity-1 {
+  opacity: 1;
 }
 
