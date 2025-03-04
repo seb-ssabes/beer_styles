@@ -35,20 +35,20 @@ export default class extends Controller {
     e.currentTarget.classList.add("hovered-border");
   }
 
-  beerHoverLeave() {
+  beerHoverLeave(e) {
     const text = this.beerTextTarget.classList;
     const icons = document.querySelectorAll(".beer-icon");
+    const target = e.currentTarget;
 
     this.hoverTimeout = setTimeout(() => {
       this.beerTextTarget.innerText = "any Style";
-
 
       text.remove("animate-slide-up");
       void this.beerTextTarget.offsetWidth;
 
       text.add("animate-slide-up");
 
-      e.currentTarget.classList.remove("hovered-border");
+      target.classList.remove("hovered-border");
     }, 500);
     icons.forEach(icon => icon.classList.remove("opacity-40", "dark-gray"));
   }

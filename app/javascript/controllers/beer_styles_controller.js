@@ -1,48 +1,99 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["beerStylesList", "infoCard", "beerTypeData"]
+  static targets = ["beerStylesList", "infoCard", "beerTypeData", "contentContainer", "cardContent"]
 
   connect() {
     console.log("Hola from Styles")
+    this.isCardVisible = false;
   }
 
   showList(e) {
     const beerTypeId = e.currentTarget.dataset.beerTypeId;
     const beerTypeName = e.currentTarget.dataset.beerTypeName;
     const beerTypeDescription = e.currentTarget.dataset.beerTypeDescription;
+    const isFirstClick = !this.beerTypeDataTarget.innerHTML.trim();
 
-    this.beerTypeDataTarget.innerHTML = `
-      <div class="flex flex-col items-center text-center">
+    this.isCardVisible = false;
+    this.infoCardTarget.classList.remove("show");
+
+    if (!isFirstClick) {
+      this.beerTypeDataTarget.classList.add("opacity-0", "scale-95");
+      this.beerStylesListTarget.classList.add("opacity-0", "scale-95");
+    }
+
+    const delay = isFirstClick ? 0 : 1600;
+
+    setTimeout(() => {
+      this.beerTypeDataTarget.innerHTML = `
+        <div class="flex flex-col items-center text-center">
         <h2 class="text-2xl font-bold">${beerTypeName}</h2>
-        <p class="italic text-lg">${beerTypeDescription}</p>
-      </div>
-    `
+          <p class="italic text-lg">${beerTypeDescription}</p>
+          </div>
+      `;
 
-    this.removeModalIfNeeded();
+      this.removeModalIfNeeded();
 
-    fetch(`/beer_styles/beer_type_styles?beer_type_id=${beerTypeId}`)
+      fetch(`/beer_styles/beer_type_styles?beer_type_id=${beerTypeId}`)
       .then(response => response.text())
       .then(html => {
         this.beerStylesListTarget.innerHTML = html;
+
+        this.contentContainerTarget.classList.remove("shrink");
+
+        this.infoCardTarget.classList.remove("show");
+
+        this.beerTypeDataTarget.classList.remove("opacity-0", "scale-95");
+        this.beerStylesListTarget.classList.remove("opacity-0", "scale-95");
       })
       .catch(error => console.error('Error fetching beer styles:', error));
+    }, delay);
   }
 
   showBeerStyle(e) {
     const beerStyleId = e.currentTarget.dataset.styleId;
-    console.log("Fetching details for beer style:", beerStyleId);
 
-    fetch(`/beer_styles/${beerStyleId}`)
+    this.contentContainerTarget.classList.add("shrink");
+
+    fetch(`/beer_styles/${beerStyleId}?partial=content`)
       .then(response => response.text())
       .then(html => {
         this.removeModalIfNeeded();
-        this.infoCardTarget.innerHTML = html;
 
+        if (!this.isCardVisible) {
+          console.log("Card is not visible, updating front content");
+          this.cardContentTarget.innerHTML = html;
+
+          setTimeout(() => {
+            console.log("Making card visible");
+            this.infoCardTarget.classList.add("show");
+            this.infoCardTarget.classList.remove("opacity-0", "scale-95");
+            this.cardContentTarget.classList.remove("opacity-0", "scale-95");
+            this.isCardVisible = true;
+          }, 500);
+        } else {
+          this.infoCardTarget.classList.add("opacity-0");
+          this.cardContentTarget.classList.add("opacity-0");
+
+          setTimeout(() => {
+            this.cardContentTarget.innerHTML = html;
+
+            this.infoCardTarget.classList.remove("opacity-0");
+            this.cardContentTarget.classList.remove("opacity-0");
+
+            this.infoCardTarget.classList.add("opacity-1");
+            this.cardContentTarget.classList.add("opacity-1");
+
+            setTimeout(() => {
+              this.infoCardTarget.classList.remove("opacity-1");
+              this.cardContentTarget.classList.remove("opacity-1")
+            }, 500);
+          }, 600);
+        }
       })
       .catch(error => console.error('Error fetching beer style details:', error));
 
-    this.infoCardTarget.classList.remove("hidden");
+    this.infoCardTarget.classList.remove("hidden", "opacity-0");
   }
 
   removeModalIfNeeded() {

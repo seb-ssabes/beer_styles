@@ -58,7 +58,25 @@
   box-shadow: 8px 8px 2px 1px #dddddd;
 }
 
+.content-container {
+  width: 100%;
+  position: relative;
+  transition: transform 1s ease-in-out;
+}
 
+.content-container.shrink {
+  transform: translateX(-20%);
+}
+
+.info-card {
+  position: absolute;
+  right: 0;
+  top: 15%;
+  left: 53%;
+  width: 40%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+}
 
 /* From Uiverse.io by Madflows */
 button {
@@ -130,3 +148,31 @@ button.learn-more:active::before {
   -webkit-transform: translate3d(0, 0, -1em);
   transform: translate3d(0, 0, -1em);
 }
+
+/* Base style for .info-card and .card-content */
+.info-card,
+.card-content {
+  position: absolute;
+  width: 40%;
+  height: auto;
+  opacity: 0; /* Start invisible */
+  transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth opacity and transform transition */
+}
+
+.info-card.show {
+  opacity: 1; /* Make the card visible when "show" class is added */
+}
+
+.card-content.show {
+  opacity: 1; /* Make the content visible when "show" class is added */
+}
+
+/* Optional: Fade-in/fade-out classes */
+.opacity-0 {
+  opacity: 0;
+}
+
+.opacity-1 {
+  opacity: 1;
+}
+
