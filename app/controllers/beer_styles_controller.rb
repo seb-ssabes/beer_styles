@@ -15,10 +15,6 @@ class BeerStylesController < ApplicationController
   def show
     @beer_style = BeerStyle.find(params[:id])
 
-    if params[:partial] == "content"
-      render partial: "beer_styles/card_content", locals: { beer_style: @beer_style }
-    else
-      render :show
-    end
+    render partial: "beer_styles/card_content", locals: { beer_style: @beer_style }
   end
 end

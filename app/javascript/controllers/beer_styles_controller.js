@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["beerStylesList", "infoCard", "beerTypeData", "contentContainer", "cardContent"]
+  static targets = ["beerStylesList", "infoCard", "beerTypeData", "contentContainer"]
 
   connect() {
     console.log("Hola from Styles")
@@ -52,48 +52,41 @@ export default class extends Controller {
 
   showBeerStyle(e) {
     const beerStyleId = e.currentTarget.dataset.styleId;
+    const card = this.infoCardTarget
 
     this.contentContainerTarget.classList.add("shrink");
 
-    fetch(`/beer_styles/${beerStyleId}?partial=content`)
+    fetch(`/beer_styles/${beerStyleId}`)
       .then(response => response.text())
       .then(html => {
         this.removeModalIfNeeded();
 
         if (!this.isCardVisible) {
           console.log("Card is not visible, updating front content");
-          this.cardContentTarget.innerHTML = html;
+          card.innerHTML = html;
 
           setTimeout(() => {
-            console.log("Making card visible");
-            this.infoCardTarget.classList.add("show");
-            this.infoCardTarget.classList.remove("opacity-0", "scale-95");
-            this.cardContentTarget.classList.remove("opacity-0", "scale-95");
+            card.classList.add("show");
+            card.classList.remove("opacity-0", "scale-95");
             this.isCardVisible = true;
           }, 500);
+
         } else {
-          this.infoCardTarget.classList.add("opacity-0");
-          this.cardContentTarget.classList.add("opacity-0");
+          card.classList.remove("show");
+          card.classList.add("opacity-0");
 
           setTimeout(() => {
-            this.cardContentTarget.innerHTML = html;
+            card.innerHTML = html;
+            void card.offsetWidth;
+            card.classList.remove("opacity-0", "scale-95");
+            card.classList.add("show");
+          }, 900);
 
-            this.infoCardTarget.classList.remove("opacity-0");
-            this.cardContentTarget.classList.remove("opacity-0");
-
-            this.infoCardTarget.classList.add("opacity-1");
-            this.cardContentTarget.classList.add("opacity-1");
-
-            setTimeout(() => {
-              this.infoCardTarget.classList.remove("opacity-1");
-              this.cardContentTarget.classList.remove("opacity-1")
-            }, 500);
-          }, 600);
         }
       })
       .catch(error => console.error('Error fetching beer style details:', error));
 
-    this.infoCardTarget.classList.remove("hidden", "opacity-0");
+    card.classList.remove("hidden", "opacity-0");
   }
 
   removeModalIfNeeded() {
