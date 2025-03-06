@@ -9,7 +9,7 @@ module BeerTypesHelper
     "Bock" => "icons/sniffer",
     "Amber Ale" => "icons/pint4",
     "Porter" => "icons/pint1",
-    "IPA" => "icons/sniffer",
+    "IPA" => "icons/ipa2",
     "Brown Ale" => "icons/pint1",
     "Stout" => "icons/sniffer",
     "Strong Ale" => "icons/pint1",
@@ -19,4 +19,25 @@ module BeerTypesHelper
   def beer_type_icon(beer_type_name)
     ICONS[beer_type_name]
   end
+
+  def beer_type_color(beer_type_name)
+    # color_classes = {
+    #   "Pale Lager" =>,
+    #   "Wheat Beer" => ,
+    #   "Pale Ale" =>,
+    #   "Amber Lager" => ,
+    #   "Dark Lager" => ,
+    #   "Pilsner" => ,
+    #   "Bock" => ,
+    #   "Porter" => ,
+    #   "IPA" => ,
+    #   "Brown Ale" => ,
+    #   "Stout" => ,
+    #   "Strong Ale" => ,
+    #   "Sour Ale" => ,
+    # }
+
+    color_classes[beer_type_name]
+  end
+
 end

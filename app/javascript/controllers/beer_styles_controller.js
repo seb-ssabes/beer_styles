@@ -62,7 +62,6 @@ export default class extends Controller {
         this.removeModalIfNeeded();
 
         if (!this.isCardVisible) {
-          console.log("Card is not visible, updating front content");
           card.innerHTML = html;
 
           setTimeout(() => {
