@@ -1,5 +1,6 @@
 <div class="flex items-center justify-center bg-opacity-50">
-  <div class="card w-96 p-6 relative bg-white shadow-lg rounded-lg">
+  <div class="card w-96 p-6 relative bg-white shadow-lg rounded-lg"
+      data-controller="card-hover">
     <div class="flex justify-between items-center -mt-3">
       <h2 class="text-2xl font-bold text-start flex-1"><%= beer_style.name %></h2>
       <button class="text-gray-500 font-bold text-xl" data-action="click->beer-styles#closeModal">X</button>
@@ -15,11 +16,38 @@
         <p class="font-bold">ABV</p>
         <p><%= beer_style.abv %></p>
       </div>
-      <div class="items-center">
+      <div class="items-center" data-action="mouseenter->card-hover#ibuHover mouseleave->card-hover#ibuExit">
+        <div data-card-hover-target="ibuExplainer"
+          class="card absolute left-1/2 -top-10 w-48 p-3 text-sm text-white bg-gray-200 rounded-lg
+                  shadow-lg opacity-0 scale-95 transition duration-300 ease-in-out pointer-events-none">
+          <div class="flex flex-col space-y-1">
+            <h2 class="text-base font-semibold text-gray-800">International Bitterness Units</h2>
+            <p class="text-justify text-xs leading-tight text-gray-800">
+              IBU measures the bitterness of a beer, which comes primarily from hops. The scale ranges from
+              <strong>0 to 100+</strong>, with lower values indicating mild beers like wheat ales, and
+              higher values found in intensely hoppy styles like IPAs. However, a high IBU
+              does not always mean a beer tastes very bitter due malts sweetness balancing out bitterness.
+            </p>
+          </div>
+        </div>
         <p class="font-bold">IBU</p>
         <p><%= beer_style.ibu %></p>
       </div>
-      <div class="items-end">
+      <div class="items-end" data-action="mouseenter->card-hover#srmHover mouseleave->card-hover#srmExit">
+        <div data-card-hover-target="srmExplainer"
+          class="card absolute left-1/2 -top-10 w-48 p-3 text-sm text-white bg-gray-200 rounded-lg
+                  shadow-lg opacity-0 scale-95 transition duration-300 ease-in-out pointer-events-none">
+          <div class="flex flex-col space-y-1">
+            <h2 class="text-base font-semibold text-gray-800">Standard Reference Method</h2>
+            <p class="text-justify text-xs leading-tight text-gray-800">
+              SRM is a scale used to measure the <strong>color of beer</strong>. The lower the SRM value, the lighter
+              the beer, such as pale lagers or wheat beers. The higher the SRM, the darker the beer,
+              including porters and stouts. SRM is calculated by analyzing how much light passes through the beer,
+              providing an accurate measure of its hue.
+            </p>
+            <%= image_tag "SRM.png", class: "w-full h-auto" %>
+          </div>
+        </div>
         <p class="font-bold">SRM</p>
         <p><%= beer_style.srm %></p>
       </div>
