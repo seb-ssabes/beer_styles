@@ -20,24 +20,5 @@ module BeerTypesHelper
     ICONS[beer_type_name]
   end
 
-  def beer_type_color(beer_type_name)
-    # color_classes = {
-    #   "Pale Lager" =>,
-    #   "Wheat Beer" => ,
-    #   "Pale Ale" =>,
-    #   "Amber Lager" => ,
-    #   "Dark Lager" => ,
-    #   "Pilsner" => ,
-    #   "Bock" => ,
-    #   "Porter" => ,
-    #   "IPA" => ,
-    #   "Brown Ale" => ,
-    #   "Stout" => ,
-    #   "Strong Ale" => ,
-    #   "Sour Ale" => ,
-    # }
-
-    color_classes[beer_type_name]
-  end
 
 end
