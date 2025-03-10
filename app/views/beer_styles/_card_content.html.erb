@@ -26,7 +26,7 @@
               IBU measures the bitterness of a beer, which comes primarily from hops. The scale ranges from
               <strong>0 to 100+</strong>, with lower values indicating mild beers like wheat ales, and
               higher values found in intensely hoppy styles like IPAs. However, a high IBU
-              does not always mean a beer tastes very bitter due malts sweetness balancing out bitterness.
+              does not always mean a beer tastes very bitter due to malts sweetness balancing out bitterness.
             </p>
           </div>
         </div>
@@ -54,15 +54,15 @@
     </div>
 
     <div class="grid grid-cols-3 gap-4 text-center mt-5">
-      <div>
+      <div class="flex-col items-center justify-start">
         <p class="font-bold">Origin</p>
-        <p><%= beer_style.origin %></p>
+        <div class="text-2xl"><%= country_flag(beer_style.origin) %></div>
       </div>
-      <div>
+      <div class="flex flex-col items-center justify-start">
         <p class="font-bold">Glassware</p>
         <p><%= beer_style.glassware %></p>
       </div>
-      <div>
+      <div class="flex flex-col items-center justify-start">
         <p class="font-bold">Temp</p>
         <p><%= beer_style.temperature %></p>
       </div>

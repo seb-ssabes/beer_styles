@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+.fi {
+  display: inline-block !important;
+}
+
 .beer-type {
   padding: 1rem;
   border-radius: 0.5rem;
