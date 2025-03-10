@@ -5,7 +5,7 @@ module BeerTypesHelper
     "Pale Ale" => "icons/hops",
     "Amber Lager" => "icons/pint2",
     "Dark Lager" => "icons/pint3",
-    "Pilsner" => "icons/schop",
+    "Pilsner" => "icons/pilsner",
     "Bock" => "icons/sniffer",
     "Amber Ale" => "icons/pint4",
     "Porter" => "icons/pint1",

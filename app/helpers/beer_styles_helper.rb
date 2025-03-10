@@ -12,8 +12,8 @@ module BeerStylesHelper
       "France" => "🇫🇷",
       "Czech Republic" => "🇨🇿",
       "Poland" => "🇵🇱",
-      "Caribbean" => "Caribbean",
-      "Africa, Caribbean" => "Africa, Caribbean",
+      "Caribbean" => "🇯🇲🇵🇷🇩🇴",
+      "Africa, Caribbean" => "🇯🇲🇵🇷🇩🇴",
       "Global" => "🌐",
       "Various" => "🌐"
     }
@@ -42,5 +42,25 @@ module BeerStylesHelper
     }
 
     glasses[glassware]
+  end
+
+  def srm_color(srm)
+    range_start, range_end = srm.split('-').map(&:to_i)
+    srm_value = (range_start + range_end) / 2
+
+    case srm_value
+    when 1..5
+      "text-amber-200"
+    when 6..10
+      "text-amber-400"
+    when 11..16
+      "text-amber-600"
+    when 17..25
+      "text-amber-800"
+    when 26..31
+      "text-amber-900"
+    when 32..100
+      "text-amber-950"
+    end
   end
 end
