@@ -1,6 +1,7 @@
 <div class="grid grid-cols-3 gap-6 p-4">
   <% beer_styles.each do |style| %>
-    <button class="learn-more"
+    <button class="learn-more w-52 h-28 text-center p-4 flex items-center justify-center
+                  whitespace-normal"
          data-action="click->beer-styles#showBeerStyle"
          data-style-id="<%= style.id %>">
       <%= style.name %>

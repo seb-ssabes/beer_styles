@@ -39,7 +39,9 @@ export default class extends Controller {
       .then(html => {
         this.beerStylesListTarget.innerHTML = html;
 
+
         this.contentContainerTarget.classList.remove("shrink");
+        this.contentContainerTarget.offsetWidth
 
         this.infoCardTarget.classList.remove("show");
 
@@ -55,6 +57,7 @@ export default class extends Controller {
     const card = this.infoCardTarget
 
     this.contentContainerTarget.classList.add("shrink");
+    this.contentContainerTarget.offsetWidth
 
     fetch(`/beer_styles/${beerStyleId}`)
       .then(response => response.text())
@@ -93,10 +96,5 @@ export default class extends Controller {
     if (existingModal) {
       existingModal.remove();
     }
-  }
-
-  closeModal(e) {
-    e.preventDefault();
-    this.removeModalIfNeeded();
   }
 }

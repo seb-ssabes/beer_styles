@@ -4,6 +4,14 @@
   display: inline-block !important;
 }
 
+.beer-title {
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid #5a5a5a;
+}
+
 .beer-type {
   padding: 1rem;
   border-radius: 0.5rem;
@@ -66,20 +74,11 @@
   width: 100%;
   position: relative;
   transition: transform 1s ease-in-out;
+  will-change: transform;
 }
 
 .content-container.shrink {
   transform: translateX(-20%);
-}
-
-.info-card {
-  position: absolute;
-  right: 0;
-  top: 15%;
-  left: 53%;
-  width: 40%;
-  opacity: 0;
-  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
 }
 
 /* From Uiverse.io by Madflows */
@@ -158,9 +157,15 @@ button.learn-more:active::before {
 }
 
 .info-card {
-  position: absolute;
-  width: 40%;
   height: auto;
+  position: absolute;
+  right: 0;
+  top: 15%;
+  left: 53%;
+  width: 50%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+
 }
 
 .opacity-0 {
