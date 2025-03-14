@@ -59,6 +59,8 @@ export default class extends Controller {
     this.contentContainerTarget.classList.add("shrink");
     this.contentContainerTarget.offsetWidth
 
+    window.scrollTo({ top: 0, behavior: "smooth" });
+
     fetch(`/beer_styles/${beerStyleId}`)
       .then(response => response.text())
       .then(html => {
