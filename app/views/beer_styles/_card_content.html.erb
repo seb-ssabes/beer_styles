@@ -15,10 +15,16 @@
         <p class="font-bold">ABV</p>
         <p><%= beer_style.abv %></p>
       </div>
-      <div class="items-center" data-action="mouseenter->card-hover#ibuHover mouseleave->card-hover#ibuExit">
+      <div class="relative">
+        <div class="items-center"
+             data-action="mouseenter->card-hover#ibuHover mouseleave->card-hover#ibuExit">
+          <p class="font-bold">IBU</p>
+          <p><%= beer_style.ibu %></p>
+        </div>
         <div data-card-hover-target="ibuExplainer"
-          class="card absolute left-1/2 -top-10 w-48 p-3 text-sm text-white bg-gray-200 rounded-lg
-                  shadow-lg opacity-0 scale-95 transition duration-300 ease-in-out pointer-events-none">
+             class="card absolute left-1/2 -translate-x-1/2 bottom-full m-2 w-48 p-3 text-sm text-white bg-gray-200 rounded-lg
+                    shadow-lg opacity-0 scale-95 transition duration-300 ease-in-out pointer-events-none"
+             data-action="mouseenter->card-hover#keepOpen mouseleave->card-hover#ibuExit">
           <div class="flex flex-col space-y-1">
             <h2 class="text-base font-semibold text-gray-800">International Bitterness Units</h2>
             <p class="text-justify text-xs leading-tight text-gray-800">
@@ -29,13 +35,16 @@
             </p>
           </div>
         </div>
-        <p class="font-bold">IBU</p>
-        <p><%= beer_style.ibu %></p>
       </div>
-      <div class="items-end" data-action="mouseenter->card-hover#srmHover mouseleave->card-hover#srmExit">
+      <div class="relative">
+        <div class="items-end" data-action="mouseenter->card-hover#srmHover mouseleave->card-hover#srmExit">
+          <p class="font-bold">SRM</p>
+          <p><%= beer_style.srm %></p>
+        </div>
         <div data-card-hover-target="srmExplainer"
-          class="card absolute left-1/2 -top-10 w-48 p-3 text-sm text-white bg-gray-200 rounded-lg
-                  shadow-lg opacity-0 scale-95 transition duration-300 ease-in-out pointer-events-none">
+          class="card absolute left-1/2 -translate-x-1/2 bottom-full w-48 p-3 m-2 text-sm text-white bg-gray-200 rounded-lg
+                  shadow-lg opacity-0 scale-95 transition duration-300 ease-in-out pointer-events-none"
+          data-action="mouseenter->card-hover#keepOpen mouseleave->card-hover#srmExit">
           <div class="flex flex-col space-y-1">
             <h2 class="text-base font-semibold text-gray-800">Standard Reference Method</h2>
             <p class="text-justify text-xs leading-tight text-gray-800">
@@ -47,8 +56,6 @@
             <%= image_tag "SRM.png", class: "w-full h-auto" %>
           </div>
         </div>
-        <p class="font-bold">SRM</p>
-        <p><%= beer_style.srm %></p>
       </div>
     </div>
 
