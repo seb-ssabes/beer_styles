@@ -23,22 +23,22 @@ module BeerStylesHelper
 
   def beer_glass(glassware)
     glasses = {
-      "Pilsner glass" => "icons/pilsner",
-      "Stein or Mug" => "icons/schop",
-      "Weizen glass" => "icons/wheat",
-      "Weizenbock glass" => "icons/wheat",
-      "Tulip glass" => "icons/pilsner",
-      "Pint glass" => "icons/pint3",
-      "Stein glass" => "icons/schop",
-      "Pint Glass" => "icons/pint3",
-      "Tulip Glass" => "icons/pilsner",
-      "Goblet Glass" => "icons/sniffer",
-      "IPA Glass" => "icons/pint4",
-      "Weizen Glass" => "icons/wheat",
-      "Nonic pint" => "icons/pint2",
-      "English pint" => "icons/pint2",
-      "American pint" => "icons/pint4",
-      "Snifter glass" => "icons/sniffer"
+      "Pilsner glass" => "beer_styles/pilsner",
+      "Stein or Mug" => "beer_styles/schop",
+      "Weizen glass" => "beer_styles/wheat",
+      "Weizenbock glass" => "beer_styles/wheat",
+      "Tulip glass" => "beer_styles/pilsner",
+      "Pint glass" => "beer_styles/pint3",
+      "Stein glass" => "beer_styles/schop",
+      "Pint Glass" => "beer_styles/pint3",
+      "Tulip Glass" => "beer_styles/pilsner",
+      "Goblet Glass" => "beer_styles/sniffer",
+      "IPA Glass" => "beer_styles/pint4",
+      "Weizen Glass" => "beer_styles/wheat",
+      "Nonic pint" => "beer_styles/pint2",
+      "English pint" => "beer_styles/pint2",
+      "American pint" => "beer_styles/pint4",
+      "Snifter glass" => "beer_styles/sniffer"
     }
 
     glasses[glassware]

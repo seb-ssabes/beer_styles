@@ -7,7 +7,7 @@
 
     <div class="flex flex-row items-center">
       <p class="text-gray-700 mt-3 text-justify w-3/5 m"><%= beer_style.style_description %></p>
-      <%= inline_svg_tag beer_glass(beer_style.glassware), class: "#{srm_color(beer_style.srm)} w-2/5 h-auto max-h-32 scale-110 object-cover max-w-none"%>
+      <%= cl_image_tag beer_glass(beer_style.glassware), class: "#{srm_color(beer_style.srm)} w-2/5 h-auto max-h-32 scale-110 object-cover max-w-none"%>
     </div>
 
     <div class="grid grid-cols-3 gap-4 mt-5 text-center">
