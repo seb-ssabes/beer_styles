@@ -26,7 +26,7 @@
               data-beer-type-name="<%= beer_type.name %>"
               data-beer-type-description="<%= beer_type.description %>"
               class="beer-type">
-              <%= cl_image_tag beer_type_icon(beer_type.name), class: "beer-icon" %>
+              <%= inline_svg_tag beer_type_icon(beer_type.name), class: "beer-icon" %>
             </div>
 
           </div>

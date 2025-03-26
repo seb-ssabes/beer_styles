@@ -94,9 +94,9 @@ Rails.application.configure do
   # ]
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
-  Cloudinary.config do |config|
-    config.cloud_name = Rails.application.credentials.dig(:cloudinary, :cloud_name)
-    config.api_key = Rails.application.credentials.dig(:cloudinary, :api_key)
-    config.api_secret = Rails.application.credentials.dig(:cloudinary, :api_secret)
-  end
+  # Cloudinary.config do |config|
+  #   config.cloud_name = Rails.application.credentials.dig(:cloudinary, :cloud_name)
+  #   config.api_key = Rails.application.credentials.dig(:cloudinary, :api_key)
+  #   config.api_secret = Rails.application.credentials.dig(:cloudinary, :api_secret)
+  # end
 end
