@@ -27,8 +27,8 @@ export default class extends Controller {
     setTimeout(() => {
       this.beerTypeDataTarget.innerHTML = `
         <div class="flex flex-col items-center text-center">
-        <h2 class="text-2xl font-bold">${beerTypeName}</h2>
-          <p class="italic text-lg text-center max-w-lg break-words">${beerTypeDescription}</p>
+        <h2 class="text-2xl font-bold rubik">${beerTypeName}</h2>
+          <p class="italic text-lg text-center max-w-lg break-words saira">${beerTypeDescription}</p>
           </div>
       `;
 

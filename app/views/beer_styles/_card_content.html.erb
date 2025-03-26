@@ -1,8 +1,8 @@
-<div class="flex items-center justify-center bg-opacity-50">
+<div class="flex items-center justify-center bg-opacity-50 saira">
   <div class="card w-96 p-6 relative bg-white shadow-lg rounded-lg"
       data-controller="card-hover">
     <div class="flex justify-between items-center -mt-3">
-      <h2 class="text-2xl font-bold text-start flex-1"><%= beer_style.name %></h2>
+      <h2 class="text-2xl font-bold text-start flex-1 rubik"><%= beer_style.name %></h2>
     </div>
 
     <div class="flex flex-row items-center">
@@ -12,13 +12,13 @@
 
     <div class="grid grid-cols-3 gap-4 mt-5 text-center">
       <div class="items-start">
-        <p class="font-bold">ABV</p>
+        <p class="rubik">ABV</p>
         <p><%= beer_style.abv %></p>
       </div>
       <div class="relative">
         <div class="items-center"
              data-action="mouseenter->card-hover#ibuHover mouseleave->card-hover#ibuExit">
-          <p class="font-bold">IBU</p>
+          <p class="rubik">IBU</p>
           <p><%= beer_style.ibu %></p>
         </div>
         <div data-card-hover-target="ibuExplainer"
@@ -26,7 +26,7 @@
                     shadow-lg opacity-0 scale-95 transition duration-300 ease-in-out pointer-events-none"
              data-action="mouseenter->card-hover#keepOpen mouseleave->card-hover#ibuExit">
           <div class="flex flex-col space-y-1">
-            <h2 class="text-base font-semibold text-gray-800">International Bitterness Units</h2>
+            <h2 class="text-base font-bold text-gray-800">International Bitterness Units</h2>
             <p class="text-justify text-xs leading-tight text-gray-800">
               IBU measures the bitterness of a beer, which comes primarily from hops. The scale ranges from
               <strong>0 to 100+</strong>, with lower values indicating mild beers like wheat ales, and
@@ -38,7 +38,7 @@
       </div>
       <div class="relative">
         <div class="items-end" data-action="mouseenter->card-hover#srmHover mouseleave->card-hover#srmExit">
-          <p class="font-bold">SRM</p>
+          <p class="rubik">SRM</p>
           <p><%= beer_style.srm %></p>
         </div>
         <div data-card-hover-target="srmExplainer"
@@ -46,7 +46,7 @@
                   shadow-lg opacity-0 scale-95 transition duration-300 ease-in-out pointer-events-none"
           data-action="mouseenter->card-hover#keepOpen mouseleave->card-hover#srmExit">
           <div class="flex flex-col space-y-1">
-            <h2 class="text-base font-semibold text-gray-800">Standard Reference Method</h2>
+            <h2 class="text-base text-gray-800 font-bold">Standard Reference Method</h2>
             <p class="text-justify text-xs leading-tight text-gray-800">
               SRM is a scale used to measure the <strong>color of beer</strong>. The lower the SRM value, the lighter
               the beer, such as pale lagers or wheat beers. The higher the SRM, the darker the beer,
@@ -61,26 +61,26 @@
 
     <div class="grid grid-cols-3 gap-4 text-center mt-5">
       <div class="flex-col items-center justify-start">
-        <p class="font-bold">Origin</p>
+        <p class="rubik">Origin</p>
         <div class="text-2xl"><%= country_flag(beer_style.origin) %></div>
       </div>
       <div class="flex flex-col items-center justify-start">
-        <p class="font-bold">Glassware</p>
+        <p class="rubik">Glassware</p>
         <p><%= beer_style.glassware %></p>
       </div>
       <div class="flex flex-col items-center justify-start">
-        <p class="font-bold">Temp</p>
+        <p class="rubik">Temp</p>
         <p><%= beer_style.temperature %></p>
       </div>
     </div>
 
     <div class="mt-4 text-center">
-      <p class="font-bold">Common Malts Used</p>
+      <p class="rubik">Common Malts Used</p>
       <p><%= beer_style.common_malts %></p>
     </div>
 
     <div class="mt-5 text-center">
-      <p class="font-bold">Notes</p>
+      <p class="rubik">Notes</p>
       <p><%= beer_style.notes %></p>
     </div>
 
