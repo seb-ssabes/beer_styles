@@ -8,6 +8,8 @@ The Beer Catalog is an interactive web app designed to showcase the wide variety
 Originally built as a project to practice Ruby on Rails and JavaScript (especially hover effects and animations), it quickly evolved into a Beer Catalog/Encyclopedia.
 With more than a hundred unique beer styles, many people are unfamiliar with their distinct characteristics. This app serves as a visual and informative guide, allowing the user to explore different beer styles, learn about their characteristics, and discover what makes each one unique.
 
+**NOTE:** This project is hosted on Render.com's free tier, which means the server goes to sleep after periods of inactivity. As a result, the initial response may take **up to 1 minute** while the instance spins back up. Once running, the app performs normally. 
+
 # About the App
 The Beer Catalog allows users to explore and learn about a vast selection of beer styles in an interactive and visually engaging way.
 You can start by choosing from 14 main Beer Types, such as IPA, Stout, Pilsner, Pale Ale, and more. Within each type, you'll find a variety of Beer Styles, like West Coast IPA, New England IPA, Red IPA, Imperial Stout, and many others.
