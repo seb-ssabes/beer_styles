@@ -99,4 +99,5 @@ Rails.application.configure do
   #   config.api_key = Rails.application.credentials.dig(:cloudinary, :api_key)
   #   config.api_secret = Rails.application.credentials.dig(:cloudinary, :api_secret)
   # end
+  
 end
