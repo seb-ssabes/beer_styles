@@ -7,8 +7,10 @@ This project is hosted on Render.com's free tier, which means the server goes to
 
 [https://beer-styles.onrender.com/](url)
 
+If the hyperlink doesn't work, please try copy and pasting the link into your browser.
+
 # Introduction
-The Beer Catalog is an interactive web app designed to showcase the wide variety of beer styles worldwide. 
+The Beer Catalog is an interactive web app designed to showcase the wide variety of beer styles worldwide.
 
 Originally built as a project to practice Ruby on Rails and JavaScript (especially hover effects and animations), it quickly evolved into a Beer Catalog/Encyclopedia.
 With more than a hundred unique beer styles, many people are unfamiliar with their distinct characteristics. This app serves as a visual and informative guide, allowing the user to explore different beer styles, learn about their characteristics, and discover what makes each one unique.
