@@ -7,8 +7,6 @@ This project is hosted on Render.com's free tier, which means the server goes to
 
 [https://beer-styles.onrender.com/](https://beer-styles.onrender.com/)
 
-<a href="https://beer-styles.onrender.com/" target="_blank" rel="noopener noreferrer">Go to Site</a>
-
 # Introduction
 The Beer Catalog is an interactive web app designed to showcase the wide variety of beer styles worldwide.
 
